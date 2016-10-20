@@ -7,14 +7,16 @@
 <body>
 <h1>List of Items</h1>
 <ul id="items"><li>First</li><li>Second</li></ul>
-<input type="text" id="newText" />
-<input type="button" value="Add"
-       onclick="addItem()">
+<input type="text" id="newItemText" />
+<input type="button" value="Add" onclick="addItem()">
 <script>
     function addItem() {
-        // TODO: add new item to the list
-        
-    }
+        let text = document.getElementById('newItemText').value;
+        let item = document.createElement('li');
+        item.appendChild(document.createTextNode(text));
+        document.getElementById('items').appendChild(item);
+        document.getElementById('newItemText').value = '';
+}
 </script>
 </body>
 </html>
