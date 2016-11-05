@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>DOM Search</title>
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"
-            integrity="sha256 cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+            integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
             crossorigin="anonymous"></script>
     <style>
         .add-controls, .search-controls {
@@ -43,7 +43,62 @@
     domSearch("#content",false);
 
     function domSearch(selector, caseSensitive) {
+        $('#content').attr('class', 'items-control'); //TODO replace with selector
 
+        //Add text box
+        let adderDiv =
+                $('<div>')
+                .attr('class', 'add-controls');
+        let adderLabel =
+                $('<label>')
+                .html('Enter text: ')
+                .append($('<input>'));
+        let adderBtn = $('<a>').attr('class', 'button').attr('style', 'display: inline-block').html('Add');
+        adderLabel.appendTo(adderDiv);
+        adderBtn.appendTo(adderDiv);
+        adderDiv.appendTo(selector);
+
+        //Search Box
+        let searchDiv =
+                $('<div>')
+                        .attr('class', 'search-controls');
+        let searchLabel = $('<label>')
+                .html('Search:')
+                .append($('<input>'));
+
+                let searchBtn = ($('<button>').addClass('Search').text('Search')); //TODO TEST
+        searchBtn.on('click', function () {
+//            $("#container li.name input.name_val").val();
+            let searchText = $('#result-controls ')
+            console.log()
+        });
+                searchLabel.append(searchBtn);
+        searchLabel.appendTo(searchDiv);
+        searchDiv.appendTo(selector);
+
+        //Results field
+        let resultsDiv = $('<div>')
+                .attr('class', 'result-controls');
+        let resultUl = $('<ul>')
+                .attr('class', 'items-list');
+        resultUl.appendTo(resultsDiv);
+        resultsDiv.appendTo(selector);
+
+        //Add Textbox to results
+        adderBtn.click(function () {
+            let text = $('label input').val();
+            console.log(text);
+            let resultX = $('<a>')
+                    .attr('class', 'button')
+                    .html('X');
+            let resultLi = $('<li>')
+                    .append(resultX).
+                    append($('<strong>').
+                    text(text)).
+                    appendTo(resultUl);
+        });
+
+        //Searchbox
     }
 </script>
 </body>
