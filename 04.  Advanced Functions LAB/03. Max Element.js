@@ -1,3 +1,3 @@
-/**
- * Created by admin on 31-Oct-16.
- */
+function maxElement(arr) {
+    return Math.max.apply(null, arr);
+}
